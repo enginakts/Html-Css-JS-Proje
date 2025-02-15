@@ -1,0 +1,134 @@
+/* Genel stil ayarları */
+/* Sayfa düzeni için temel stil ayarları */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Koyu siyah arka plan */
+    display: flex;
+    justify-content: center; /* İçeriği yatayda ortalar */
+    align-items: center; /* İçeriği dikeyde ortalar */
+    height: 100vh; /* Sayfa yüksekliğini tam ekran yapar */
+    margin: 0; /* Sayfa kenarındaki boşlukları sıfırlar */
+  }
+  
+  /* Kartların konteyneri */
+  .card-container {
+    display: flex;
+    justify-content: space-between; /* Kartlar arasında eşit boşluk bırakır */
+    flex-wrap: wrap; /* Ekran daraldıkça kartların alt satıra geçmesini sağlar */
+    width: 80%; /* Konteynerin genişliği ekranın %80'i kadar olacak */
+    max-width: 1200px; /* Maksimum genişlik 1200px ile sınırlanır */
+  }
+  
+  /* Her bir kartın temel düzeni */
+  .card {
+    width: 100%; /* Kartın genişliğini %100 yapıyoruz */
+    max-width: 300px; /* Kartın maksimum genişliği 300px */
+    height: 400px; /* Kartın yüksekliği 400px */
+    margin: 10px; /* Kartlar arasına boşluk bırakır */
+    perspective: 1000px; /* Kartın 3D dönüşümünü gösterebilmesi için perspektif ekler */
+  }
+  
+  /* Kartın iç kısmı */
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s; /* Dönüşüm için animasyon süresi ekler */
+    transform-style: preserve-3d; /* 3D dönüşüm için stil ayarı */
+  }
+  
+  /* Kart üzerine gelindiğinde dönüşümü tetikler */
+  .card:hover .card-inner {
+    transform: rotateY(180deg); /* Kartın üzerine gelindiğinde 180 derece döner */
+  }
+  
+  /* Kartların ön yüzü ve arka yüzü için stil */
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Kartın arka kısmı görünmez olur */
+    display: flex;
+    justify-content: center; /* İçeriği yatayda ortalar */
+    align-items: center; /* İçeriği dikeyde ortalar */
+    flex-direction: column;/*Objeleri alt alta yerleştimek için*/
+    padding: 20px; /* İçeriğin kenarlarından boşluk bırakır */
+    box-sizing: border-box; /* Padding'in kutu boyutuna dahil edilmesini sağlar */
+    background-color: #1a1a1a; /* Koyu gri siyah arka plan */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti ekler */
+  }
+  
+  /* Kartın ön yüzü için stil */
+  .card-front {
+    background-color: #d32f2f; /* Kırmızı arka plan */
+  }
+  
+  .card-back {
+    background-color: #b71c1c; /* Daha koyu kırmızı arka plan */
+    color: white; /* Yazıyı beyaz yapar */
+    transform: rotateY(180deg); /* Arkayı döndürerek gizler */
+  }
+  
+  /* Kartın içindeki resim */
+  .card img {
+    width: 100%; /* Resmin genişliğini %100 yapar */
+    height: 200px; /* Resmin yüksekliğini 200px yapar */
+    object-fit: cover; /* Resmin boyutlarını koruyarak taşmasını engeller */
+    border-radius: 10px; /* Resmin köşelerini yuvarlatır */
+  }
+  
+  /* Başlık stilini belirler */
+  h2 {
+    margin: 10px 0; /* Başlık etrafında boşluk bırakır */
+    color: white; /* Başlık metnini beyaz yapar */
+  }
+  
+  /* Paragraf stilini belirler */
+  p {
+    font-size: 14px; /* Yazı boyutunu 14px yapar */
+    text-align: center; /* Yazıyı ortaya hizalar */
+    color: white; /* Paragraf metnini beyaz yapar */
+  }
+  
+  /* Medya sorguları ile ekran boyutlarına göre düzenleme */
+  
+  /* Mobil cihazlar için stil (max-width: 600px) */
+  @media (max-width: 600px) {
+    .card-container {
+      flex-direction: column; /* Kartları dikey olarak hizalar */
+      align-items: center; /* Kartları yatayda ortalar */
+    }
+  
+    .card {
+      width: 90%; /* Kartlar %90 genişliğinde olacak */
+      max-width: 100%; /* Kartların maksimum genişliği %100 olacak */
+      margin: 15px 0; /* Kartlar arasındaki boşluğu artırır */
+    }
+  }
+  
+  /* Tablet cihazlar için stil (max-width: 900px) */
+  @media (max-width: 900px) {
+    .card-container {
+      flex-direction: row; /* Kartları yatay olarak hizalar */
+      justify-content: center; /* Kartları ortalar */
+    }
+  
+    .card {
+      width: 45%; /* Kartlar %45 genişliğinde olacak */
+      margin: 10px; /* Kartlar arasındaki boşluk 10px */
+    }
+  }
+  
+  /* Masaüstü cihazlar için stil (min-width: 901px) */
+  @media (min-width: 901px) {
+    .card-container {
+      flex-direction: row; /* Kartları yatay olarak hizalar */
+      justify-content: space-between; /* Kartlar arasındaki boşluk eşit olur */
+    }
+  
+    .card {
+      width: 30%; /* Kartlar %30 genişliğinde olacak */
+      margin: 20px; /* Kartlar arasındaki boşluk 20px */
+    }
+  }
+  
